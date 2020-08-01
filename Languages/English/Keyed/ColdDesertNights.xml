@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <ColdDesertNights_Function>Function</ColdDesertNights_Function>
   <ColdDesertNights_Function_Desc>The temperature function for this biome; the flatter you go, the more sharply temperature drops off at night and rises during the day, but the more CPU intensive the calculation is.</ColdDesertNights_Function_Desc>
@@ -42,4 +42,5 @@
   <ColdDesertNights_WeatherMiscSettings>Misc Settings</ColdDesertNights_WeatherMiscSettings>
   <ColdDesertNights_Checked>checked</ColdDesertNights_Checked>
   <ColdDesertNights_Unchecked>unchecked</ColdDesertNights_Unchecked>
+
 </LanguageData>
