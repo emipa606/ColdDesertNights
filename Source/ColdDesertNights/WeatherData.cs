@@ -8,20 +8,21 @@ namespace ColdDesertNights
 {
     public class WeatherData
     {
-        private readonly WeatherDef weather;
-        private readonly SettingHandle<float> commonality;
-        private readonly SettingHandle<bool> allowRepeating;
         private readonly SettingHandle<bool> allowEarly;
+        private readonly SettingHandle<bool> allowRepeating;
+        private readonly SettingHandle<float> commonality;
+        private readonly WeatherDef weather;
 
         /// <summary>
-        /// Initializes the weather data from the given <see cref="ModSettingsPack"/> settings
-        /// and <see cref="WeatherDef"/>, creating our settings in the process.
+        ///     Initializes the weather data from the given <see cref="ModSettingsPack" /> settings
+        ///     and <see cref="WeatherDef" />, creating our settings in the process.
         /// </summary>
         /// <param name="settings">The setting pack to use</param>
         /// <param name="biome">The biome to use</param>
         /// <param name="weather">The weather to base this off of</param>
         /// <param name="visibilityFunc">Function which returns if we should display this now</param>
-        public WeatherData(ModSettingsPack settings, BiomeDef biome, WeatherDef weather, SettingHandle.ShouldDisplay visibilityFunc)
+        public WeatherData(ModSettingsPack settings, BiomeDef biome, WeatherDef weather,
+            SettingHandle.ShouldDisplay visibilityFunc)
         {
             this.weather = weather;
             var curCommonality =
@@ -44,7 +45,9 @@ namespace ColdDesertNights
             allowEarly = settings.GetHandle($"weather_{biome.defName}_{weather.defName}_early",
                 "    " + "ColdDesertNights_BiomeWeatherEarly".Translate(),
                 "ColdDesertNights_BiomeWeatherEarly_Desc".Translate(
-                    (Favorability.Neutral <= weather.favorability ? "ColdDesertNights_Checked" : "ColdDesertNights_Unchecked").Translate()),
+                    (Favorability.Neutral <= weather.favorability
+                        ? "ColdDesertNights_Checked"
+                        : "ColdDesertNights_Unchecked").Translate()),
                 Favorability.Neutral <= weather.favorability);
 
             // And set our visibility predicates...
@@ -55,7 +58,7 @@ namespace ColdDesertNights
         }
 
         /// <summary>
-        /// Get the weather commonality based on the various factors
+        ///     Get the weather commonality based on the various factors
         /// </summary>
         /// <param name="map">The map to check it on</param>
         /// <param name="rainAllowed">The next tick rain is allowed at</param>
@@ -68,9 +71,12 @@ namespace ColdDesertNights
             if (!allowRepeating && weather == map.weatherManager.curWeather ||
                 !weather.temperatureRange.Includes(weatherTemp) ||
                 !allowEarly && GenDate.DaysPassed < 8 ||
-                weather.rainRate > 0.100000001490116 && Find.TickManager.TicksGame < rainAllowed ||
+                weather.rainRate > 0.100000001490116 &&
+                rainAllowed > 0 && Find.TickManager.TicksGame < rainAllowed ||
                 weather.rainRate > 0.100000001490116 && preventRain)
             {
+                //Log.Message(
+                //    $"{weather.defName} not allowed, temp: {weather.temperatureRange} early: {allowEarly} rainrate: {weather.rainRate}");
                 return 0.0f;
             }
 
@@ -78,7 +84,10 @@ namespace ColdDesertNights
             var currentCommonality = commonality.Value;
 
             // If we need to put out fires, increase rainfall considerably:
-            if (map.fireWatcher.LargeFireDangerPresent && weather.rainRate > 0.100000001490116) currentCommonality *= 20f;
+            if (map.fireWatcher.LargeFireDangerPresent && weather.rainRate > 0.100000001490116)
+            {
+                currentCommonality *= 20f;
+            }
 
             // Otherwise calculate our whole curve for rainfall and stuff...
             if (weather.commonalityRainfallFactor != null)

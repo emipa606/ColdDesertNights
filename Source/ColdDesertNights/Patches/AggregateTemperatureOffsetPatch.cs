@@ -25,20 +25,21 @@ namespace ColdDesertNights.Patches
         }
 
         /// <summary>
-        /// Gets the offset for the given condition manager, recursively checking any parent managers we have
+        ///     Gets the offset for the given condition manager, recursively checking any parent managers we have
         /// </summary>
         /// <param name="manager">The condition manager to check</param>
-        /// <param name="data">The <see cref="BiomeData"/> to use</param>
+        /// <param name="data">The <see cref="BiomeData" /> to use</param>
         /// <returns>The aggregated offset</returns>
         private static float GetOffset(GameConditionManager manager, BiomeData data)
         {
             // Add up all the various offsets we have:
-            var num = manager.ActiveConditions.Sum(condition => data.GetBiomeConditionTemperatureOffset(condition));
+            var num = manager.ActiveConditions.Sum(data.GetBiomeConditionTemperatureOffset);
 
             if (manager.Parent != null)
             {
                 num += GetOffset(manager.Parent, data);
             }
+
             return num;
         }
     }
