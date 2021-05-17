@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <name>Cold Desert Nights (Continued)</name>
   <packageId>Mlie.ColdDesertNights</packageId>
@@ -80,6 +80,6 @@ All settings can be configured while playing:
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
+
 </description>
 </ModMetaData>
-

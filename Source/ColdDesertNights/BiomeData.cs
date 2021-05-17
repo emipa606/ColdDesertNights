@@ -14,7 +14,7 @@ namespace ColdDesertNights
         private const float HalfPi = Mathf.PI / 2;
 
         private static readonly Dictionary<TemperatureFunctions, Func<float, float, float>> Functions =
-            new()
+            new Dictionary<TemperatureFunctions, Func<float, float, float>>()
             {
                 {TemperatureFunctions.Vanilla, (f, m) => Mathf.Cos(f) * m},
                 {TemperatureFunctions.Flatter, (f, m) => m * Mathf.Sin(HalfPi * Mathf.Cos(f))},
@@ -29,17 +29,17 @@ namespace ColdDesertNights
         ///     grabbed automatically due to how the vanilla code handles it
         /// </summary>
         private static readonly Dictionary<GameConditionDef, float> DefaultConditionTemps =
-            new()
+            new Dictionary<GameConditionDef, float>()
             {
                 {GameConditionDefOf.ColdSnap, -20f},
                 {GameConditionDefOf.HeatWave, 17f}
             };
 
         private readonly Dictionary<GameConditionDef, SettingHandle<float>> conditionOffsets =
-            new();
+            new Dictionary<GameConditionDef, SettingHandle<float>>();
 
         private readonly Dictionary<WeatherDef, WeatherData> weatherCommonalities =
-            new();
+            new Dictionary<WeatherDef, WeatherData>();
 
         // Our actual values
         private Func<float, float, float> function;
@@ -48,7 +48,7 @@ namespace ColdDesertNights
         private float multiplier;
         private float offset;
 
-        private SimpleCurve seasonalTempVariationCurve = new()
+        private SimpleCurve seasonalTempVariationCurve = new SimpleCurve()
         {
             new CurvePoint(0.0f, 3f),
             new CurvePoint(0.1f, 4f),
@@ -220,9 +220,9 @@ namespace ColdDesertNights
 
             seasonalTempVariationCurve = new SimpleCurve
             {
-                new(0.0f, 3f * shift),
-                new(0.1f, 4f * shift),
-                new(1f, value)
+                new CurvePoint(0.0f, 3f * shift),
+                new CurvePoint(0.1f, 4f * shift),
+                new CurvePoint(1f, value)
             };
         }
 

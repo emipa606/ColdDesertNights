@@ -6,7 +6,7 @@ namespace ColdDesertNights.Utility
 {
     public static class SpacerDrawer
     {
-        private static readonly Color LineColor = new(0.3f, 0.3f, 0.3f);
+        private static readonly Color LineColor = new Color(0.3f, 0.3f, 0.3f);
         private static int spacers;
 
         private static bool Draw(string label, Rect controlRect)

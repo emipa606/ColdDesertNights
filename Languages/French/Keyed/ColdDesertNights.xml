@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <ColdDesertNights_Function>Fonction</ColdDesertNights_Function>
+  <ColdDesertNights_Function_Desc>La fonction température de ce biome; plus vous êtes plat, plus la température baisse brusquement la nuit et augmente pendant la journée, mais plus le calcul est gourmand en CPU.</ColdDesertNights_Function_Desc>
+  <ColdDesertNights_Multiplier>Différence jour-nuit</ColdDesertNights_Multiplier>
+  <ColdDesertNights_Multiplier_Desc>Les degrés Celsius auxquels la température va baisser entre le point le plus chaud de la journée et le point le plus froid de la nuit (par défaut 14).</ColdDesertNights_Multiplier_Desc>
+  <ColdDesertNights_Offset>Décalage</ColdDesertNights_Offset>
+  <ColdDesertNights_Offset_Desc>Le décalage de température Celsius pour ce biome (0 par défaut). À 0, cela produira des jours qui sont tout aussi chauds que la vanille, mais ajustent les nuits en fonction de la différence définie ci-dessus. Les valeurs positives produiront des jours et des nuits plus chauds, tandis que des valeurs négatives produiront des jours et des nuits plus froids.</ColdDesertNights_Offset_Desc>
+  <ColdDesertNights_Function_Enum_Vanilla>Vanilla</ColdDesertNights_Function_Enum_Vanilla>
+  <ColdDesertNights_Function_Enum_Flatter>Plus plat (plus lent)</ColdDesertNights_Function_Enum_Flatter>
+  <ColdDesertNights_Function_Enum_Flattest>Le plus plat (le plus lent)</ColdDesertNights_Function_Enum_Flattest>
+  <ColdDesertNights_BiomeSelector>Choisissez le biome à modifier</ColdDesertNights_BiomeSelector>
+  <ColdDesertNights_BiomeWeather>Poids</ColdDesertNights_BiomeWeather>
+  <ColdDesertNights_BiomeWeather_Desc>Le poids de cette météo lors du choix d'un type de météo (par défaut {0}). À 0, cela désactivera complètement la météo donnée dans ce biome.
+  
+ Noter:
+  - Cela ne permet pas à la pluie de se produire à moins de 0 degré Celsius, ni à la neige à des températures supérieures à 0 degré.
+  - La désactivation de toute pluie / neige dans un biome empêchera également RimWorld d'éteindre automatiquement les incendies.</ColdDesertNights_BiomeWeather_Desc>
+  <ColdDesertNights_DefaultBiomeWeather>Météo par défaut</ColdDesertNights_DefaultBiomeWeather>
+  <ColdDesertNights_DefaultBiomeWeather_Desc>La météo à laquelle se rabattre si aucun ne peut être choisi en fonction de divers poids et facteurs (par défaut: Effacer).</ColdDesertNights_DefaultBiomeWeather_Desc>
+  <ColdDesertNights_IgnoreRainLimit>Ignorer la limite de pluie</ColdDesertNights_IgnoreRainLimit>
+  <ColdDesertNights_IgnoreRainLimit_Desc>Le jeu est autorisé à choisir la pluie même s'il vient de pleuvoir (par défaut: non coché).</ColdDesertNights_IgnoreRainLimit_Desc>
+  <ColdDesertNights_WeatherTempMin>Température minimale de la météo</ColdDesertNights_WeatherTempMin>
+  <ColdDesertNights_WeatherTempMin_Desc>La température minimale en degrés Celsius, nous devrions prétendre qu'elle est actuellement lors du choix de la météo (c'est-à-dire: réglez-la sur 1 pour forcer la pluie même à des températures glaciales; par défaut -999)</ColdDesertNights_WeatherTempMin_Desc>
+  <ColdDesertNights_WeatherTempMax>Température maximale de la météo</ColdDesertNights_WeatherTempMax>
+  <ColdDesertNights_WeatherTempMax_Desc>La température maximale en degrés Celsius, nous devrions prétendre qu'elle est actuellement lors du choix de la météo (c'est-à-dire: réglez-la sur -1 pour forcer la neige même à des températures non glaciales; par défaut 999)</ColdDesertNights_WeatherTempMax_Desc>
+  <ColdDesertNights_Seasonal>Changement saisonnier maximum</ColdDesertNights_Seasonal>
+  <ColdDesertNights_Seasonal_Desc>Décalage saisonnier maximal qui se produit entre l'été et l'hiver dans ce biome aux pôles de la planète (par défaut 56). Ceci est ajusté en fonction de la distance de l'équateur de la case, et peut être considérablement inférieur.</ColdDesertNights_Seasonal_Desc>
+  <ColdDesertNights_Pane>Groupe de paramètres</ColdDesertNights_Pane>
+  <ColdDesertNights_Pane_Desc>Choisissez le groupe de paramètres que vous souhaitez modifier pour ce biome</ColdDesertNights_Pane_Desc>
+  <ColdDesertNights_Pane_Enum_General>Général</ColdDesertNights_Pane_Enum_General>
+  <ColdDesertNights_Pane_Enum_Weather>météo</ColdDesertNights_Pane_Enum_Weather>
+  <ColdDesertNights_Pane_Enum_Conditions>Conditions de jeu</ColdDesertNights_Pane_Enum_Conditions>
+  <ColdDesertNights_ConditionTemp>Température de {0}</ColdDesertNights_ConditionTemp>
+  <ColdDesertNights_ConditionTemp_Desc>L'augmentation / la diminution de température à appliquer lorsque cette condition est en vigueur.</ColdDesertNights_ConditionTemp_Desc>
+  <ColdDesertNights_SelectList_Default>- Sélectionnez -</ColdDesertNights_SelectList_Default>
+  <ColdDesertNights_WeatherSelector>Choisissez la météo à modifier</ColdDesertNights_WeatherSelector>
+  <ColdDesertNights_BiomeWeatherRepeating>Peut répéter</ColdDesertNights_BiomeWeatherRepeating>
+  <ColdDesertNights_BiomeWeatherRepeating_Desc>Si coché, permet de choisir la météo plusieurs fois de suite ({0} par défaut).</ColdDesertNights_BiomeWeatherRepeating_Desc>
+  <ColdDesertNights_BiomeWeatherEarly>Autorisé la première semaine</ColdDesertNights_BiomeWeatherEarly>
+  <ColdDesertNights_BiomeWeatherEarly_Desc>Si coché, permet de choisir la météo dans les 7 premiers jours; généralement empêché par temps plus dur qui pourrait être difficile à gérer au début ({0} par défaut).</ColdDesertNights_BiomeWeatherEarly_Desc>
+  <ColdDesertNights_WeatherMiscSettings>Paramètres divers</ColdDesertNights_WeatherMiscSettings>
+  <ColdDesertNights_Checked>coché</ColdDesertNights_Checked>
+  <ColdDesertNights_Unchecked>décoché</ColdDesertNights_Unchecked>
+</LanguageData>
