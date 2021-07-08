@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -17,7 +16,7 @@ namespace ColdDesertNights.Patches
                 __result = GetOffset(__instance, Main.BiomeSettings[__instance.ownerMap.Biome]);
                 return false;
             }
-            catch (Exception)
+            catch
             {
                 Log.Error("Unable to override game condition temperature offsets; falling back to vanilla.");
                 return true;

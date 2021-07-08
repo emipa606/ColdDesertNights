@@ -5,6 +5,8 @@
 Update of Taryn Winterblades mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=948483652
 
+- Added french translation, thanks qux!
+
 ![Image](https://i.imgur.com/7Gzt3Rg.png)
 
 
@@ -36,11 +38,11 @@ Each biome can be configured individually, [u]by default, they will all be norma
   - If the weather can be chosen multiple times in a row
   - If the weather can be chosen within the first week of gameplay (ie: thunderstorms)
 - If multiple rainy weather types can be chosen in a row
-- The minimum and maximum temperatures to use for determining which weather to use - want a freezing desert that still gets rain? Set the minimum temperature to 1C and you won't ever get snow.
+- The minimum and maximum temperatures to use for determining which weather to use - want a freezing desert that still gets rain? Set the minimum temperature to 1C and you won&apos;t ever get snow.
 - The increase/decrease in temperature caused by the Heat Wave and Cold Snap game conditions.
 
 All settings can be configured while playing:
-- Changes to temperatures will take place relatively quickly while unpaused (within the next 60 ticks in game when the temperature cache is refreshed).  On the world map, temperature changes should appear in the 'Terrain' tab immediately after updating.
+- Changes to temperatures will take place relatively quickly while unpaused (within the next 60 ticks in game when the temperature cache is refreshed).  On the world map, temperature changes should appear in the &apos;Terrain&apos; tab immediately after updating.
 - Changes to weather will occur the next time the game tries to get a new weather (generally at least once per in-game day).
 
 **Conflicts**: Should be none, but I replace the following methods:

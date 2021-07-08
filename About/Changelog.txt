@@ -1,5 +1,8 @@
 # Changelog for ColdDesertNights
 
+1.0.4.0 - Mod updated for 1.3 and passed autotests
+
+
 1.0.3.0 - Added french translation, thanks qux!
 
 

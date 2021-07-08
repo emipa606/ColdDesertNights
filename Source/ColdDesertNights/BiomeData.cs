@@ -14,7 +14,7 @@ namespace ColdDesertNights
         private const float HalfPi = Mathf.PI / 2;
 
         private static readonly Dictionary<TemperatureFunctions, Func<float, float, float>> Functions =
-            new Dictionary<TemperatureFunctions, Func<float, float, float>>()
+            new Dictionary<TemperatureFunctions, Func<float, float, float>>
             {
                 {TemperatureFunctions.Vanilla, (f, m) => Mathf.Cos(f) * m},
                 {TemperatureFunctions.Flatter, (f, m) => m * Mathf.Sin(HalfPi * Mathf.Cos(f))},
@@ -29,7 +29,7 @@ namespace ColdDesertNights
         ///     grabbed automatically due to how the vanilla code handles it
         /// </summary>
         private static readonly Dictionary<GameConditionDef, float> DefaultConditionTemps =
-            new Dictionary<GameConditionDef, float>()
+            new Dictionary<GameConditionDef, float>
             {
                 {GameConditionDefOf.ColdSnap, -20f},
                 {GameConditionDefOf.HeatWave, 17f}
@@ -48,7 +48,7 @@ namespace ColdDesertNights
         private float multiplier;
         private float offset;
 
-        private SimpleCurve seasonalTempVariationCurve = new SimpleCurve()
+        private SimpleCurve seasonalTempVariationCurve = new SimpleCurve
         {
             new CurvePoint(0.0f, 3f),
             new CurvePoint(0.1f, 4f),

@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -49,7 +48,7 @@ namespace ColdDesertNights.Patches
                 __result = WeatherDefOf.Clear;
                 return false;
             }
-            catch (Exception)
+            catch
             {
                 Log.Error("Unable to override choosing the next weather; falling back to vanilla.");
                 return true;

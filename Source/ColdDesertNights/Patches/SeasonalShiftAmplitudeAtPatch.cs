@@ -1,5 +1,4 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 using Verse;
 
 namespace ColdDesertNights.Patches
@@ -19,7 +18,7 @@ namespace ColdDesertNights.Patches
                     : -settings.CalculateSeasonalTemp(dist);
                 return false;
             }
-            catch (Exception)
+            catch
             {
                 Log.Error("Unable to adjust seasonal temperature; falling back to vanilla.");
                 return true;

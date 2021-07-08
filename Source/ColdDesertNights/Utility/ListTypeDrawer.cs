@@ -61,7 +61,7 @@ namespace ColdDesertNights.Utility
         {
             return opt == null || includeDefaultOption && EqualityComparer<T>.Default.Equals(opt, default)
                 ? "ColdDesertNights_SelectList_Default".Translate()
-                : (TaggedString) GenText.ToTitleCaseSmart(getLabelFunc.Invoke(opt));
+                : (TaggedString) GenText.ToTitleCaseSmart(getLabelFunc(opt));
         }
     }
 }
