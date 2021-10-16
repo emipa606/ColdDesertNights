@@ -16,12 +16,19 @@ namespace ColdDesertNights.Patches
             {
                 var num = GenDate.DayPercent(absTick, Find.WorldGrid.LongLatOf(tile).x);
                 var f = 6.28318548f * (num + 0.32f);
-                __result = Main.BiomeSettings[Find.WorldGrid.tiles[tile].biome].CalculateTemp(f);
+                var biome = Find.WorldGrid.tiles[tile].biome;
+                if (!Main.BiomeSettings.ContainsKey(biome))
+                {
+                    return true;
+                }
+
+                __result = Main.BiomeSettings[biome].CalculateTemp(f);
                 return false;
             }
-            catch (Exception e)
+            catch (Exception exception)
             {
-                Log.Error($"Error getting biome for tile {tile} on world grid due to {e} - {e.StackTrace}");
+                Log.Error(
+                    $"Error getting biome for tile {tile} on world grid due to {exception} - {exception.StackTrace}");
                 return true;
             }
         }

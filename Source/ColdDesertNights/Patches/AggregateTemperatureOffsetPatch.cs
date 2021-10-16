@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -13,12 +14,18 @@ namespace ColdDesertNights.Patches
         {
             try
             {
+                if (!Main.BiomeSettings.ContainsKey(__instance.ownerMap.Biome))
+                {
+                    return true;
+                }
+
                 __result = GetOffset(__instance, Main.BiomeSettings[__instance.ownerMap.Biome]);
                 return false;
             }
-            catch
+            catch (Exception exception)
             {
-                Log.Error("Unable to override game condition temperature offsets; falling back to vanilla.");
+                Log.Error(
+                    $"Unable to override game condition temperature offsets; falling back to vanilla. {exception}");
                 return true;
             }
         }

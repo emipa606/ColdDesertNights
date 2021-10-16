@@ -1,25 +1,16 @@
 # ColdDesertNights
 
-![Image](https://i.imgur.com/WAEzk68.png)
+![Image](https://i.imgur.com/buuPQel.png)
 
 Update of Taryn Winterblades mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=948483652
 
 - Added french translation, thanks qux!
 
-![Image](https://i.imgur.com/7Gzt3Rg.png)
+![Image](https://i.imgur.com/pufA0kM.png)
 
-
-[table]
-	[tr]
-		[td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)
-[/td]
-		[td]https://github.com/emipa606/ColdDesertNights]![Image](https://i.imgur.com/kTkpTOE.png)
-[/td]
-	[/tr]
-[/table]
 	
-![Image](https://i.imgur.com/NOW7jU1.png)
+![Image](https://i.imgur.com/Z4GOv8H.png)
 
 
 **This has been ported to 1.1 by Mlie**: https://steamcommunity.com/sharedfiles/filedetails/?id=2042689053
@@ -38,11 +29,11 @@ Each biome can be configured individually, [u]by default, they will all be norma
   - If the weather can be chosen multiple times in a row
   - If the weather can be chosen within the first week of gameplay (ie: thunderstorms)
 - If multiple rainy weather types can be chosen in a row
-- The minimum and maximum temperatures to use for determining which weather to use - want a freezing desert that still gets rain? Set the minimum temperature to 1C and you won&apos;t ever get snow.
+- The minimum and maximum temperatures to use for determining which weather to use - want a freezing desert that still gets rain? Set the minimum temperature to 1C and you won't ever get snow.
 - The increase/decrease in temperature caused by the Heat Wave and Cold Snap game conditions.
 
 All settings can be configured while playing:
-- Changes to temperatures will take place relatively quickly while unpaused (within the next 60 ticks in game when the temperature cache is refreshed).  On the world map, temperature changes should appear in the &apos;Terrain&apos; tab immediately after updating.
+- Changes to temperatures will take place relatively quickly while unpaused (within the next 60 ticks in game when the temperature cache is refreshed).  On the world map, temperature changes should appear in the 'Terrain' tab immediately after updating.
 - Changes to weather will occur the next time the game tries to get a new weather (generally at least once per in-game day).
 
 **Conflicts**: Should be none, but I replace the following methods:
@@ -52,7 +43,7 @@ All settings can be configured while playing:
 - GameConditionManager.AggregateTemperatureOffset
 
 
-![Image](https://i.imgur.com/Rs6T6cr.png)
+![Image](https://i.imgur.com/PwoNOj4.png)
 
 
 
@@ -62,7 +53,6 @@ All settings can be configured while playing:
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
-
 
 
 

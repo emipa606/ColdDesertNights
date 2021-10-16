@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -15,6 +16,11 @@ namespace ColdDesertNights.Patches
                 // Get all of our ducks in order...
                 var traverse = Traverse.Create(__instance);
                 var map = traverse.Field("map").GetValue<Map>();
+                if (!Main.BiomeSettings.ContainsKey(map.Biome))
+                {
+                    return true;
+                }
+
                 var biomeSetting = Main.BiomeSettings[map.Biome];
                 var weatherTemp = biomeSetting.BoundWeatherTemp(map.mapTemperature.OutdoorTemp);
                 var rainAllowed = biomeSetting.CanIgnoreRainLimits()
@@ -48,9 +54,9 @@ namespace ColdDesertNights.Patches
                 __result = WeatherDefOf.Clear;
                 return false;
             }
-            catch
+            catch (Exception exception)
             {
-                Log.Error("Unable to override choosing the next weather; falling back to vanilla.");
+                Log.Error($"Unable to override choosing the next weather; falling back to vanilla. {exception}");
                 return true;
             }
         }
