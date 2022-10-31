@@ -1,9 +1,8 @@
-﻿namespace ColdDesertNights
+﻿namespace ColdDesertNights;
+
+public enum SettingsPane
 {
-    public enum SettingsPane
-    {
-        General,
-        Weather,
-        Conditions
-    }
+    General,
+    Weather,
+    Conditions
 }

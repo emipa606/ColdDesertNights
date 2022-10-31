@@ -1,9 +1,8 @@
-﻿namespace ColdDesertNights
+﻿namespace ColdDesertNights;
+
+public enum TemperatureFunctions
 {
-    public enum TemperatureFunctions
-    {
-        Vanilla,
-        Flatter,
-        Flattest
-    }
+    Vanilla,
+    Flatter,
+    Flattest
 }
