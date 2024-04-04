@@ -14,12 +14,12 @@ public static class AggregateTemperatureOffsetPatch
     {
         try
         {
-            if (!Main.BiomeSettings.ContainsKey(__instance.ownerMap.Biome))
+            if (!Main.BiomeSettings.TryGetValue(__instance.ownerMap.Biome, out var setting))
             {
                 return true;
             }
 
-            __result = GetOffset(__instance, Main.BiomeSettings[__instance.ownerMap.Biome]);
+            __result = GetOffset(__instance, setting);
             return false;
         }
         catch (Exception exception)

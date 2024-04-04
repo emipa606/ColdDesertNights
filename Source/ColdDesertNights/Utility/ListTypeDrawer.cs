@@ -7,22 +7,14 @@ using Verse;
 
 namespace ColdDesertNights.Utility;
 
-public class ListTypeDrawer<T>
+public class ListTypeDrawer<T>(
+    SettingHandle<T> handle,
+    IEnumerable<T> options,
+    Func<T, string> getLabelFunc,
+    bool includeDefaultOption)
 {
-    private readonly Func<T, string> getLabelFunc;
-    private readonly SettingHandle<T> handle;
-    private readonly bool includeDefaultOption;
-    private readonly List<T> options;
+    private readonly List<T> options = [..options];
     private bool hasChanged;
-
-    public ListTypeDrawer(SettingHandle<T> handle, IEnumerable<T> options, Func<T, string> getLabelFunc,
-        bool includeDefaultOption)
-    {
-        this.handle = handle;
-        this.options = new List<T>(options);
-        this.getLabelFunc = getLabelFunc;
-        this.includeDefaultOption = includeDefaultOption;
-    }
 
     public bool Draw(Rect controlRect)
     {

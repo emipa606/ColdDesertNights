@@ -14,12 +14,11 @@ public static class SeasonalShiftAmplitudeAtPatch
         {
             var dist = Find.WorldGrid.DistanceFromEquatorNormalized(tile);
             var biome = Find.WorldGrid.tiles[tile].biome;
-            if (!Main.BiomeSettings.ContainsKey(biome))
+            if (!Main.BiomeSettings.TryGetValue(biome, out var settings))
             {
                 return true;
             }
 
-            var settings = Main.BiomeSettings[biome];
             __result = Find.WorldGrid.LongLatOf(tile).y >= 0.0
                 ? settings.CalculateSeasonalTemp(dist)
                 : -settings.CalculateSeasonalTemp(dist);

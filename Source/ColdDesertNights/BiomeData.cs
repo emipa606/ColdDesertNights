@@ -48,12 +48,12 @@ public class BiomeData
     private float multiplier;
     private float offset;
 
-    private SimpleCurve seasonalTempVariationCurve = new SimpleCurve
-    {
+    private SimpleCurve seasonalTempVariationCurve =
+    [
         new CurvePoint(0.0f, 3f),
         new CurvePoint(0.1f, 4f),
         new CurvePoint(1f, 28f)
-    };
+    ];
 
     // Our setting handles
     private SettingHandle<TemperatureFunctions> settingFunc;
@@ -215,15 +215,15 @@ public class BiomeData
     /// <param name="value">The maximal shift</param>
     private void RecalculateSeasonalCurve(float value)
     {
-        value = value / 2;
+        value /= 2;
         var shift = value / 28;
 
-        seasonalTempVariationCurve = new SimpleCurve
-        {
+        seasonalTempVariationCurve =
+        [
             new CurvePoint(0.0f, 3f * shift),
             new CurvePoint(0.1f, 4f * shift),
             new CurvePoint(1f, value)
-        };
+        ];
     }
 
     /// <summary>
@@ -289,7 +289,7 @@ public class BiomeData
             var setting = settings.GetHandle($"condition_{key}_{condition.defName}_offset",
                 "ColdDesertNights_ConditionTemp".Translate(GenText.ToTitleCaseSmart(condition.label)),
                 "ColdDesertNights_ConditionTemp_Desc".Translate(),
-                DefaultConditionTemps.ContainsKey(condition) ? DefaultConditionTemps[condition] : 0f,
+                DefaultConditionTemps.TryGetValue(condition, out var temp) ? temp : 0f,
                 Validators.FloatRangeValidator(-400, 400));
             setting.VisibilityPredicate = visibilityFunc;
             conditionOffsets[condition] = setting;

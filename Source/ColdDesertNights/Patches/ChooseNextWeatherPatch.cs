@@ -16,12 +16,11 @@ public static class ChooseNextWeatherPatch
             // Get all of our ducks in order...
             var traverse = Traverse.Create(__instance);
             var map = traverse.Field("map").GetValue<Map>();
-            if (!Main.BiomeSettings.ContainsKey(map.Biome))
+            if (!Main.BiomeSettings.TryGetValue(map.Biome, out var biomeSetting))
             {
                 return true;
             }
 
-            var biomeSetting = Main.BiomeSettings[map.Biome];
             var weatherTemp = biomeSetting.BoundWeatherTemp(map.mapTemperature.OutdoorTemp);
             var rainAllowed = biomeSetting.CanIgnoreRainLimits()
                 ? 0
