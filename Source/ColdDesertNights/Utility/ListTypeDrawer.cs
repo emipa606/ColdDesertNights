@@ -19,7 +19,7 @@ public class ListTypeDrawer<T>(
     public bool Draw(Rect controlRect)
     {
         // Get our current label and try to draw it to the screen:
-        var label = GetLabel(handle.Value);
+        var label = getLabel(handle.Value);
         if (!Widgets.ButtonText(controlRect, label))
         {
             return true;
@@ -27,7 +27,7 @@ public class ListTypeDrawer<T>(
 
         // Iterate our options:
         var opts = options
-            .Select(t => new FloatMenuOption(GetLabel(t), () =>
+            .Select(t => new FloatMenuOption(getLabel(t), () =>
             {
                 handle.Value = t;
                 hasChanged = true;
@@ -49,7 +49,7 @@ public class ListTypeDrawer<T>(
     /// </summary>
     /// <param name="opt">The option to get the label for</param>
     /// <returns>The text</returns>
-    private string GetLabel(T opt)
+    private string getLabel(T opt)
     {
         return opt == null || includeDefaultOption && EqualityComparer<T>.Default.Equals(opt, default)
             ? "ColdDesertNights_SelectList_Default".Translate()

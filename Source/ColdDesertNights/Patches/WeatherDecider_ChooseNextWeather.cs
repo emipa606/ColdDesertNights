@@ -7,7 +7,7 @@ namespace ColdDesertNights.Patches;
 
 [HarmonyPatch(typeof(WeatherDecider), "ChooseNextWeather")]
 // ReSharper disable once UnusedMember.Global
-public static class ChooseNextWeatherPatch
+public static class WeatherDecider_ChooseNextWeather
 {
     public static bool Prefix(WeatherDecider __instance, ref WeatherDef __result)
     {
@@ -33,8 +33,6 @@ public static class ChooseNextWeatherPatch
                 __result = WeatherDefOf.Clear;
                 return false;
             }
-
-            //Log.Message($"temp {weatherTemp} rain prevent {preventRain} rainallowed {rainAllowed}");
 
             // Otherwise, try and figure out the weather by weight
             if (

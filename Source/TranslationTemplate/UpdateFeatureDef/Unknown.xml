@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: - Added ability to control weather per-biome\n- Added ability to control seasonal temperature shift per-biome\n         -->
+  <ColdDesertNights_1_2_0.content>- Added ability to control weather per-biome
+- Added ability to control seasonal temperature shift per-biome
+        </ColdDesertNights_1_2_0.content>
+  <!-- EN: Cold Desert Nights -->
+  <ColdDesertNights_1_2_0.modNameReadable>Cold Desert Nights</ColdDesertNights_1_2_0.modNameReadable>
+  <!-- EN: - Added better grouping for settings\n- Added adjustment settings for the Cold Snap / Heat Wave events\n- Added more settings for controlling the weather\n         -->
+  <ColdDesertNights_1_3_0.content>- Added better grouping for settings
+- Added adjustment settings for the Cold Snap / Heat Wave events
+- Added more settings for controlling the weather
+        </ColdDesertNights_1_3_0.content>
+  <!-- EN: Cold Desert Nights -->
+  <ColdDesertNights_1_3_0.modNameReadable>Cold Desert Nights</ColdDesertNights_1_3_0.modNameReadable>
+</LanguageData>

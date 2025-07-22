@@ -6,10 +6,10 @@ namespace ColdDesertNights.Utility;
 
 public static class SpacerDrawer
 {
-    private static readonly Color LineColor = new Color(0.3f, 0.3f, 0.3f);
+    private static readonly Color LineColor = new(0.3f, 0.3f, 0.3f);
     private static int spacers;
 
-    private static bool Draw(string label, Rect controlRect)
+    private static bool draw(string label, Rect controlRect)
     {
         var textWidth = Text.CalcSize(label).x + 10;
         var left = controlRect.x + textWidth - controlRect.width;
@@ -32,7 +32,7 @@ public static class SpacerDrawer
     {
         var spacer = settings.GetHandle<bool>($"s{spacers++}", label,
             string.Empty);
-        spacer.CustomDrawer = r => Draw(label, r);
+        spacer.CustomDrawer = r => draw(label, r);
         spacer.Unsaved = true;
         spacer.VisibilityPredicate = visibilityFunc;
     }

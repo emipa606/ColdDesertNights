@@ -1,19 +1,20 @@
 ﻿using System;
 using HarmonyLib;
+using RimWorld.Planet;
 using Verse;
 
 namespace ColdDesertNights.Patches;
 
 [HarmonyPatch(typeof(GenTemperature), nameof(GenTemperature.SeasonalShiftAmplitudeAt))]
 // ReSharper disable once UnusedMember.Global
-public static class SeasonalShiftAmplitudeAtPatch
+public static class GenTemperature_SeasonalShiftAmplitudeAt
 {
-    public static bool Prefix(int tile, ref float __result)
+    public static bool Prefix(PlanetTile tile, ref float __result)
     {
         try
         {
             var dist = Find.WorldGrid.DistanceFromEquatorNormalized(tile);
-            var biome = Find.WorldGrid.tiles[tile].biome;
+            var biome = tile.Tile.PrimaryBiome;
             if (!Main.BiomeSettings.TryGetValue(biome, out var settings))
             {
                 return true;

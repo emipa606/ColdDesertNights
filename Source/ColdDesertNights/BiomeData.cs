@@ -13,8 +13,8 @@ public class BiomeData
 {
     private const float HalfPi = Mathf.PI / 2;
 
-    private static readonly Dictionary<TemperatureFunctions, Func<float, float, float>> Functions =
-        new Dictionary<TemperatureFunctions, Func<float, float, float>>
+    private static readonly Dictionary<TemperatureFunctions, Func<float, float, float>> functions =
+        new()
         {
             { TemperatureFunctions.Vanilla, (f, m) => Mathf.Cos(f) * m },
             { TemperatureFunctions.Flatter, (f, m) => m * Mathf.Sin(HalfPi * Mathf.Cos(f)) },
@@ -28,18 +28,16 @@ public class BiomeData
     ///     Lists off the default temperatures per condition.  This, unfortunately, can't be
     ///     grabbed automatically due to how the vanilla code handles it
     /// </summary>
-    private static readonly Dictionary<GameConditionDef, float> DefaultConditionTemps =
-        new Dictionary<GameConditionDef, float>
+    private static readonly Dictionary<GameConditionDef, float> defaultConditionTemps =
+        new()
         {
             { GameConditionDefOf.ColdSnap, -20f },
             { GameConditionDefOf.HeatWave, 17f }
         };
 
-    private readonly Dictionary<GameConditionDef, SettingHandle<float>> conditionOffsets =
-        new Dictionary<GameConditionDef, SettingHandle<float>>();
+    private readonly Dictionary<GameConditionDef, SettingHandle<float>> conditionOffsets = new();
 
-    private readonly Dictionary<WeatherDef, WeatherData> weatherCommonalities =
-        new Dictionary<WeatherDef, WeatherData>();
+    private readonly Dictionary<WeatherDef, WeatherData> weatherCommonalities = new();
 
     // Our actual values
     private Func<float, float, float> function;
@@ -80,11 +78,11 @@ public class BiomeData
         var key = Regex.Replace(biome.defName, "[^A-Za-z]", "");
 
         // Init all of our various settings
-        InitGeneralSettings(settings, biome, key,
+        initGeneralSettings(settings, biome, key,
             () => currentPane.Value == SettingsPane.General && visibilityFunc());
-        InitWeatherSettings(settings, biome, key, weathers,
+        initWeatherSettings(settings, biome, key, weathers,
             () => currentPane.Value == SettingsPane.Weather && visibilityFunc());
-        InitConditionSettings(settings, key, conditions,
+        initConditionSettings(settings, key, conditions,
             () => currentPane.Value == SettingsPane.Conditions && visibilityFunc());
 
         // Port things from the v1 labeling:
@@ -191,11 +189,11 @@ public class BiomeData
     ///     Safely updates our function, defaulting back to vanilla if it couldn't be found
     /// </summary>
     /// <param name="type">The type to try and use</param>
-    private void UpdateFunction(TemperatureFunctions type)
+    private void updateFunction(TemperatureFunctions type)
     {
-        if (!Functions.TryGetValue(type, out function))
+        if (!functions.TryGetValue(type, out function))
         {
-            function = Functions[TemperatureFunctions.Vanilla];
+            function = functions[TemperatureFunctions.Vanilla];
         }
     }
 
@@ -203,7 +201,7 @@ public class BiomeData
     ///     Recalculates our multiplier and offset, adjusting so that the hottest
     ///     point in the day is roughly the same
     /// </summary>
-    private void RecalculateMultiplierAndOffset()
+    private void recalculateMultiplierAndOffset()
     {
         multiplier = settingMultiplier.Value / 2;
         offset = 7f - multiplier + settingOffset.Value;
@@ -213,7 +211,7 @@ public class BiomeData
     ///     Recalculates the seasonal temperature curve in this biome
     /// </summary>
     /// <param name="value">The maximal shift</param>
-    private void RecalculateSeasonalCurve(float value)
+    private void recalculateSeasonalCurve(float value)
     {
         value /= 2;
         var shift = value / 28;
@@ -233,7 +231,7 @@ public class BiomeData
     /// <param name="biome">The biome we're working with</param>
     /// <param name="key">The key to use</param>
     /// <param name="visibilityFunc">Our base visibility function</param>
-    private void InitGeneralSettings(ModSettingsPack settings, BiomeDef biome, string key,
+    private void initGeneralSettings(ModSettingsPack settings, BiomeDef biome, string key,
         SettingHandle.ShouldDisplay visibilityFunc)
     {
         settingFunc = settings.GetHandle($"temp_func_{key}",
@@ -262,15 +260,15 @@ public class BiomeData
 
 
         // And use them to init our values...
-        UpdateFunction(settingFunc.Value);
-        RecalculateMultiplierAndOffset();
-        RecalculateSeasonalCurve(settingSeasonal.Value);
+        updateFunction(settingFunc.Value);
+        recalculateMultiplierAndOffset();
+        recalculateSeasonalCurve(settingSeasonal.Value);
 
         // Sync them up when they get changed
-        settingFunc.OnValueChanged += UpdateFunction;
-        settingMultiplier.OnValueChanged += _ => RecalculateMultiplierAndOffset();
-        settingOffset.OnValueChanged += _ => RecalculateMultiplierAndOffset();
-        settingSeasonal.OnValueChanged += RecalculateSeasonalCurve;
+        settingFunc.OnValueChanged += updateFunction;
+        settingMultiplier.ValueChanged += _ => recalculateMultiplierAndOffset();
+        settingOffset.ValueChanged += _ => recalculateMultiplierAndOffset();
+        settingSeasonal.OnValueChanged += recalculateSeasonalCurve;
     }
 
     /// <summary>
@@ -280,7 +278,7 @@ public class BiomeData
     /// <param name="key">The key to use</param>
     /// <param name="conditions">The conditions to iterate through</param>
     /// <param name="visibilityFunc">Our base visibility function</param>
-    private void InitConditionSettings(ModSettingsPack settings, string key,
+    private void initConditionSettings(ModSettingsPack settings, string key,
         List<GameConditionDef> conditions, SettingHandle.ShouldDisplay visibilityFunc)
     {
         // Iterate through each of our conditions...
@@ -289,7 +287,7 @@ public class BiomeData
             var setting = settings.GetHandle($"condition_{key}_{condition.defName}_offset",
                 "ColdDesertNights_ConditionTemp".Translate(GenText.ToTitleCaseSmart(condition.label)),
                 "ColdDesertNights_ConditionTemp_Desc".Translate(),
-                DefaultConditionTemps.TryGetValue(condition, out var temp) ? temp : 0f,
+                defaultConditionTemps.GetValueOrDefault(condition, 0f),
                 Validators.FloatRangeValidator(-400, 400));
             setting.VisibilityPredicate = visibilityFunc;
             conditionOffsets[condition] = setting;
@@ -304,7 +302,7 @@ public class BiomeData
     /// <param name="key">The key to use</param>
     /// <param name="weathers">The weathers to iterate through</param>
     /// <param name="visibilityFunc">Our base visibility function</param>
-    private void InitWeatherSettings(ModSettingsPack settings, BiomeDef biome, string key,
+    private void initWeatherSettings(ModSettingsPack settings, BiomeDef biome, string key,
         List<WeatherDef> weathers,
         SettingHandle.ShouldDisplay visibilityFunc)
     {

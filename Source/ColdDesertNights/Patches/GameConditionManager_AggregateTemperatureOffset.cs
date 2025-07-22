@@ -8,7 +8,7 @@ namespace ColdDesertNights.Patches;
 
 [HarmonyPatch(typeof(GameConditionManager), "AggregateTemperatureOffset")]
 // ReSharper disable once UnusedMember.Global
-public static class AggregateTemperatureOffsetPatch
+public static class GameConditionManager_AggregateTemperatureOffset
 {
     public static bool Prefix(GameConditionManager __instance, ref float __result)
     {
@@ -19,7 +19,7 @@ public static class AggregateTemperatureOffsetPatch
                 return true;
             }
 
-            __result = GetOffset(__instance, setting);
+            __result = getOffset(__instance, setting);
             return false;
         }
         catch (Exception exception)
@@ -36,14 +36,14 @@ public static class AggregateTemperatureOffsetPatch
     /// <param name="manager">The condition manager to check</param>
     /// <param name="data">The <see cref="BiomeData" /> to use</param>
     /// <returns>The aggregated offset</returns>
-    private static float GetOffset(GameConditionManager manager, BiomeData data)
+    private static float getOffset(GameConditionManager manager, BiomeData data)
     {
         // Add up all the various offsets we have:
         var num = manager.ActiveConditions.Sum(data.GetBiomeConditionTemperatureOffset);
 
         if (manager.Parent != null)
         {
-            num += GetOffset(manager.Parent, data);
+            num += getOffset(manager.Parent, data);
         }
 
         return num;

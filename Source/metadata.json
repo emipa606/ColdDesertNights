@@ -2,5 +2,17 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "0",
-  "PreviewVersion": "1.5"
+  "PreviewVersion": "1.6",
+  "Patches": false,
+  "Defs": false,
+  "Assemblies": true,
+  "LinesOfCode": 31065,
+  "LinesOfXML": 0,
+  "CodeBaseSize": 71,
+  "LastXmlCleaning": "2025-07-22T21:09:52.9978748+02:00",
+  "SocialImageSet": true,
+  "SearchTags": [
+    " biome",
+    " seasons"
+  ]
 }

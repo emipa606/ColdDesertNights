@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <ColdDesertNights_Function>Fonction</ColdDesertNights_Function>
   <ColdDesertNights_Function_Desc>La fonction température de ce biome; plus vous êtes plat, plus la température baisse brusquement la nuit et augmente pendant la journée, mais plus le calcul est gourmand en CPU.</ColdDesertNights_Function_Desc>

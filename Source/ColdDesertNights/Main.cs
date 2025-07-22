@@ -25,13 +25,13 @@ public class Main : ModBase
     /// </summary>
     public override void DefsLoaded()
     {
-        GetBiomes();
+        getBiomes();
     }
 
     /// <summary>
     ///     Initializes the list of available <see cref="BiomeDef" />s.
     /// </summary>
-    private void GetBiomes()
+    private void getBiomes()
     {
         // Get our biome list
         var biomes = DefDatabase<BiomeDef>.AllDefs.Where(b => b.implemented && b.canBuildBase).ToList();

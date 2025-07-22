@@ -1,4 +1,4 @@
-# ColdDesertNights
+# [Cold Desert Nights (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2042689053)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
@@ -8,10 +8,8 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=948483652
 - Added french translation, thanks qux!
 
 ![Image](https://i.imgur.com/pufA0kM.png)
-
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
-
 
 **This has been ported to 1.1 by Mlie**: https://steamcommunity.com/sharedfiles/filedetails/?id=2042689053
 
@@ -19,7 +17,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=948483652
 
 Provides a way to configure the temperature difference between day and night for each biome - including the function used to determine the speed the temperature rises when the sun comes up, and how quickly it falls when the sun goes down.
 
-Each biome can be configured individually, [u]by default, they will all be normal vanilla RimWorld settings[/u], however, each can have:
+Each biome can be configured individually, <ins>by default, they will all be normal vanilla RimWorld settings</ins>, however, each can have:
 - The temperature function changed between one of three settings: Vanilla, Flatter, Flattest; see the graph and Excel image for more information.
 - The temperature difference between night and day set (in degrees Celsius)
 - The temperature offset from normal (in degrees Celsius) in case you want to make a biome warmer or colder.
@@ -49,13 +47,12 @@ All settings can be configured while playing:
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
+-  Post your error-log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
--  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
+-  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
+ 
 
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2042689053]![Image](https://img.shields.io/github/v/release/emipa606/ColdDesertNights?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
-
+[![Image](https://img.shields.io/github/v/release/emipa606/ColdDesertNights?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2042689053) | tags:  biome,  seasons
