@@ -74,8 +74,6 @@ public class WeatherData
             rainAllowed > 0 && Find.TickManager.TicksGame < rainAllowed ||
             weather.rainRate > 0.100000001490116 && preventRain)
         {
-            //Log.Message(
-            //    $"{weather.defName} not allowed, temp: {weather.temperatureRange} early: {allowEarly} rainrate: {weather.rainRate}");
             return 0.0f;
         }
 

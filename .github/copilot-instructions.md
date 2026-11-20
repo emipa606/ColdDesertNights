@@ -1,68 +1,86 @@
-# GitHub Copilot Instructions for RimWorld Mod Project
+# GitHub Copilot Instructions for Cold Desert Nights (Continued) Mod
 
 ## Mod Overview and Purpose
 
-This mod, tentatively titled "Cold Desert Nights," aims to enhance the environmental and weather systems in the game RimWorld. By implementing new mechanics for temperature management and weather patterns, the mod creates a more dynamic and immersive gameplay experience. Players will face challenging weather conditions and temperature variations based on specific biome data, enhancing the strategic depth required to survive in harsh environments.
+**Mod Name:** Cold Desert Nights (Continued)  
+**Mod Description:** This mod provides a way to configure the temperature difference between day and night for each biome in RimWorld. It allows customization of various temperature-related settings, including temperature functions, offsets, and seasonal shifts. Additionally, it enables detailed configuration of weather conditions, including weather weights, consecutive weather types, and minimum/maximum temperatures for weather selection. The mod aims to enhance the realism of temperature fluctuations and weather patterns in the game.
 
 ## Key Features and Systems
 
-1. **Dynamic Temperature Management:**
-   - Implements a sophisticated system to calculate temperature fluctuations based on sun cycles, seasonal changes, and biome-specific conditions.
-   - Features classes such as `BiomeData` to manage temperature calculations and offsets.
+### Biome Temperature Configuration
+- **Temperature Functions:** Users can select from three different temperature functions for each biome: Vanilla, Flatter, and Flattest.
+- **Temperature Difference:** Set the difference between day and night temperatures in degrees Celsius.
+- **Temperature Offset:** Adjust the overall temperature offset for each biome to make it warmer or colder.
+- **Max Seasonal Shift:** Define the maximum seasonal temperature shift based on the distance from the equator.
 
-2. **Advanced Weather Simulation:**
-   - Enhances weather realism by adjusting commonality and impact based on biome and current game conditions.
-   - Utilizes classes like `WeatherData` to adapt weather patterns dynamically.
+### Weather Configuration
+- **Weather Weights:** Customize the probability of each weather type occurring.
+- **Consecutive Weather Types:** Allow or disallow multiple consecutive rainy weather types.
+- **Weather in First Week:** Enable or disable specific weather types during the first week of gameplay.
+- **Minimum/Maximum Temperatures:** Set temperature limits to influence weather selection (e.g., freezing deserts still getting rain).
 
-3. **Biome-Specific Adaptations:**
-   - Customizable settings for different biomes allow players to experience unique environmental challenges.
-   - Integrates systems for ignoring rain limits and adjusting temperature effects based on game conditions.
-
-4. **User Interface Enhancements:**
-   - Introduces UI elements like `ListTypeDrawer<T>` for better control and visualization of mod settings.
-   - Provides a `SpacerDrawer` to organize and manage mod settings interface.
+### Real-Time Adjustments
+- **Dynamic Temperature Changes:** Changes to temperature settings take effect relatively quickly within the game.
+- **Weather Updates:** Weather changes occur the next time the game generates new weather conditions.
 
 ## Coding Patterns and Conventions
 
-- **Static Classes for Patching:**
-  - Use static classes (e.g., `AggregateTemperatureOffsetPatch`, `ChooseNextWeatherPatch`) for harmony patches to modify game functionality without altering the base game code directly.
+### C# Code Structure
+- **Namespaces:** Use clear and descriptive namespaces to organize code logically.
+- **Classes and Methods:** Keep classes focused on specific functionalities (e.g., `BiomeData`, `Patches`).
+- **Method Naming:** Use meaningful and consistent method names (e.g., `CalculateSeasonalTemp`, `GetBiomeConditionTemperatureOffset`).
+- **Documentation:** Add XML documentation comments to methods and classes for clarity.
 
-- **Generic Class Utilization:**
-  - `ListTypeDrawer<T>` demonstrates the use of generics to create flexible UI components that can handle different data types efficiently.
+### XML Integration
+- **Def Files:** Utilize XML definition files to store mod-specific data such as translations.
+- **Mod Settings:** Store configurable settings in XML to allow user adjustments.
 
-- **Encapsulation and Private Methods:**
-  - Classes like `BiomeData` encapsulate complex logic within private methods (e.g., `UpdateFunction`) to maintain a clean public interface.
-
-- **Consistent Naming Conventions:**
-  - Follow C# naming conventions with PascalCase for classes and methods and camelCase for local variables and parameters.
+### Harmony Patching
+- **Patch Classes:** Create separate classes for Harmony patches (e.g., `GenTemperature_OffsetFromSunCycle`).
+- **Prefix/Postfix Methods:** Implement `Prefix` and `Postfix` methods to modify or extend existing game methods.
 
 ## XML Integration
 
-- XML integration is assumed to be minimal for this mod since no specific XML summary is provided. However, typical mod interactions with RimWorld may involve defining new game objects or modifying existing ones via XML. Ensure any XML files used follow proper RimWorld mod formatting and naming conventions, and consider referencing them in the code where necessary.
+### Translation Files
+- **TranslationTemplate:** Use XML files for translations, ensuring compatibility with HugsLib and other translation tools.
+
+### Definition Files
+- **Mod-Specific Data:** Store mod-specific data in XML files to maintain separation from vanilla game data.
 
 ## Harmony Patching
 
-- Utilize Harmony library for method patching to ensure compatibility and safe integration with the existing game code.
-- Example patches include modifying temperature effects and weather choices through classes such as `AggregateTemperatureOffsetPatch` and `ChooseNextWeatherPatch`.
-- Always ensure patches are reversible and do not conflict with other mods by using Harmony’s patching annotations wisely.
+### Patches Overview
+- **GenTemperature_OffsetFromSunCycle:** Patch the `OffsetFromSunCycle` method to customize temperature offsets.
+- **GenTemperature_SeasonalShiftAmplitudeAt:** Patch the `SeasonalShiftAmplitudeAt` method to adjust seasonal temperature shifts.
+- **GameConditionManager_AggregateTemperatureOffset:** Patch the `AggregateTemperatureOffset` method to modify temperature offsets caused by game conditions.
+- **WeatherDecider_ChooseNextWeather:** Patch the `ChooseNextWeather` method to customize weather selection.
+
+### Patch Implementation
+- **Prefix Methods:** Use `Prefix` methods to replace or modify the original method behavior.
+- **Postfix Methods:** Use `Postfix` methods to add additional functionality after the original method executes.
 
 ## Suggestions for Copilot
 
-To make the most out of GitHub Copilot, consider these strategies:
+1. **Biome Configuration Management:** When implementing new features related to biome temperature or weather configuration, ensure that the code adheres to existing patterns and conventions.
+2. **Translation Updates:** When adding or updating translations, ensure that the XML files are properly formatted and compatible with HugsLib.
+3. **Patch Implementation:** When creating new Harmony patches, ensure that they are well-documented and test them thoroughly to avoid conflicts with other mods.
+4. **Code Refactoring:** Suggest refactoring existing code to improve readability and maintainability, especially for complex methods or classes.
+5. **User Interface Enhancements:** Propose enhancements to the user interface for easier configuration of temperature and weather settings.
 
-1. **Contextual Suggestions:**
-   - Provide Copilot with ample comments and method descriptions in the code. This helps generate contextually appropriate suggestions.
+By following these guidelines and suggestions, developers can contribute effectively to the Cold Desert Nights (Continued) mod, ensuring high-quality code and a rich user experience.
 
-2. **Leverage Patterns:**
-   - When implementing new features, start with existing patterns from classes like `BiomeData` or `WeatherData` to maintain consistency.
+## Project Solution Guidelines
+- Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
+- Use these in-solution XML files as the primary files for reference and modification.
+- The `.github/copilot-instructions.md` file is included in the solution under the `.github` solution folder, so it should be read/modified from within the solution instead of using paths outside the solution. Update this file once only, as it and the parent-path solution reference point to the same file in this workspace.
+- When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
+- In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
+- For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
 
-3. **Use of Generics:**
-   - When adding new UI components or data structures, consider using generics as shown in `ListTypeDrawer<T>` for maximum flexibility.
 
-4. **Interface Enhancements:**
-   - Experiment with Copilot to generate UI layouts for the settings pane by describing the desired components and interactions.
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
 
-5. **Testing and Safety:**
-   - Encourage Copilot to suggest test methods by prompting it with "testing" comments or TODOs, ensuring mod stability and functionality. 
-
-This file outlines the mod's foundational elements and guides you and Copilot in maintaining coding standards, enhancing the mod’s features, and ensuring an engaging RimWorld experience.

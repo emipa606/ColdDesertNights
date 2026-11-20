@@ -40,7 +40,6 @@ public static class WeatherDecider_ChooseNextWeather
                     w => biomeSetting.GetWeatherData(w).GetCommonality(map, rainAllowed, weatherTemp, preventRain),
                     out var result))
             {
-                //Log.Message($"newweather {result.defName}");
                 __result = result;
                 return false;
             }

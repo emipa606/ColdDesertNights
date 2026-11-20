@@ -13,7 +13,7 @@ public class ListTypeDrawer<T>(
     Func<T, string> getLabelFunc,
     bool includeDefaultOption)
 {
-    private readonly List<T> options = [..options];
+    private readonly List<T> options = [.. options];
     private bool hasChanged;
 
     public bool Draw(Rect controlRect)

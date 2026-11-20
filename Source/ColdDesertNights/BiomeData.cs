@@ -75,7 +75,7 @@ public class BiomeData
         List<WeatherDef> weathers, List<GameConditionDef> conditions)
     {
         // Build out the key:
-        var key = Regex.Replace(biome.defName, "[^A-Za-z]", "");
+        var key = Regex.Replace(biome.defName, "[^A-Za-z]", "", RegexOptions.None, TimeSpan.FromSeconds(1));
 
         // Init all of our various settings
         initGeneralSettings(settings, biome, key,
@@ -86,7 +86,8 @@ public class BiomeData
             () => currentPane.Value == SettingsPane.Conditions && visibilityFunc());
 
         // Port things from the v1 labeling:
-        var v1Key = Regex.Replace(biome.label, "[^A-Za-z]", ""); // <-- This was a bad plan.
+        var v1Key = Regex.Replace(biome.label, "[^A-Za-z]", "", RegexOptions.None,
+            TimeSpan.FromSeconds(1)); // <-- This was a bad plan.
 
         if (string.IsNullOrEmpty(v1Key))
         {
