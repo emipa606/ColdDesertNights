@@ -1,73 +1,41 @@
-# GitHub Copilot Instructions for Cold Desert Nights (Continued) Mod
+# GitHub Copilot Instructions for Cold Desert Nights (Continued) RimWorld Mod
 
 ## Mod Overview and Purpose
-
-**Mod Name:** Cold Desert Nights (Continued)  
-**Mod Description:** This mod provides a way to configure the temperature difference between day and night for each biome in RimWorld. It allows customization of various temperature-related settings, including temperature functions, offsets, and seasonal shifts. Additionally, it enables detailed configuration of weather conditions, including weather weights, consecutive weather types, and minimum/maximum temperatures for weather selection. The mod aims to enhance the realism of temperature fluctuations and weather patterns in the game.
+Cold Desert Nights (Continued) is a RimWorld mod that provides a way to configure the temperature difference between day and night for each biome. This includes the function used to determine the speed the temperature rises when the sun comes up, and how quickly it falls when the sun goes down. The mod allows for individual biome configuration with options to change the temperature function, set the temperature difference between night and day, and adjust the temperature offset from normal. Additionally, it allows for configuring weather settings for each biome, such as weather weight, maximum seasonal shift, and temperature limits for weather selection.
 
 ## Key Features and Systems
-
-### Biome Temperature Configuration
-- **Temperature Functions:** Users can select from three different temperature functions for each biome: Vanilla, Flatter, and Flattest.
-- **Temperature Difference:** Set the difference between day and night temperatures in degrees Celsius.
-- **Temperature Offset:** Adjust the overall temperature offset for each biome to make it warmer or colder.
-- **Max Seasonal Shift:** Define the maximum seasonal temperature shift based on the distance from the equator.
-
-### Weather Configuration
-- **Weather Weights:** Customize the probability of each weather type occurring.
-- **Consecutive Weather Types:** Allow or disallow multiple consecutive rainy weather types.
-- **Weather in First Week:** Enable or disable specific weather types during the first week of gameplay.
-- **Minimum/Maximum Temperatures:** Set temperature limits to influence weather selection (e.g., freezing deserts still getting rain).
-
-### Real-Time Adjustments
-- **Dynamic Temperature Changes:** Changes to temperature settings take effect relatively quickly within the game.
-- **Weather Updates:** Weather changes occur the next time the game generates new weather conditions.
+- **Biome Configuration**: Each biome can be configured individually with options to change the temperature function, set the temperature difference between night and day, and adjust the temperature offset from normal.
+- **Weather Configuration**: Each biome has options to configure weather settings, including weather weight, maximum seasonal shift, and temperature limits for weather selection.
+- **Real-time Temperature Changes**: Changes to temperatures take place relatively quickly while unpaused, with temperature changes appearing in the 'Terrain' tab on the world map immediately after updating.
+- **Harmony Patching**: The mod replaces several vanilla methods using Harmony patching, including GenTemperature.OffsetFromSunCycle, GenTemperature.SeasonalShiftAmplitudeAt, WeatherDecider.ChooseNextWeather, and GameConditionManager.AggregateTemperatureOffset.
 
 ## Coding Patterns and Conventions
+The Cold Desert Nights (Continued) mod follows several coding patterns and conventions that are common in RimWorld modding:
 
-### C# Code Structure
-- **Namespaces:** Use clear and descriptive namespaces to organize code logically.
-- **Classes and Methods:** Keep classes focused on specific functionalities (e.g., `BiomeData`, `Patches`).
-- **Method Naming:** Use meaningful and consistent method names (e.g., `CalculateSeasonalTemp`, `GetBiomeConditionTemperatureOffset`).
-- **Documentation:** Add XML documentation comments to methods and classes for clarity.
-
-### XML Integration
-- **Def Files:** Utilize XML definition files to store mod-specific data such as translations.
-- **Mod Settings:** Store configurable settings in XML to allow user adjustments.
-
-### Harmony Patching
-- **Patch Classes:** Create separate classes for Harmony patches (e.g., `GenTemperature_OffsetFromSunCycle`).
-- **Prefix/Postfix Methods:** Implement `Prefix` and `Postfix` methods to modify or extend existing game methods.
+- **Modding Framework**: The mod uses the RimWorld modding framework, which includes the use of Harmony patching and XML integration.
+- **XML Integration**: The mod uses XML files to define various mod features and settings.
+- **Harmony Patching**: The mod uses Harmony patching to replace vanilla methods with custom implementations.
+- **Mod Configuration**: The mod allows for real-time configuration of settings while playing, with changes taking effect immediately.
 
 ## XML Integration
-
-### Translation Files
-- **TranslationTemplate:** Use XML files for translations, ensuring compatibility with HugsLib and other translation tools.
-
-### Definition Files
-- **Mod-Specific Data:** Store mod-specific data in XML files to maintain separation from vanilla game data.
+The Cold Desert Nights (Continued) mod uses XML files to define various mod features and settings. The mod has an XML file for defining translation templates, which includes options for updating feature definitions.
 
 ## Harmony Patching
+The Cold Desert Nights (Continued) mod uses Harmony patching to replace several vanilla methods with custom implementations. The mod replaces the following methods:
 
-### Patches Overview
-- **GenTemperature_OffsetFromSunCycle:** Patch the `OffsetFromSunCycle` method to customize temperature offsets.
-- **GenTemperature_SeasonalShiftAmplitudeAt:** Patch the `SeasonalShiftAmplitudeAt` method to adjust seasonal temperature shifts.
-- **GameConditionManager_AggregateTemperatureOffset:** Patch the `AggregateTemperatureOffset` method to modify temperature offsets caused by game conditions.
-- **WeatherDecider_ChooseNextWeather:** Patch the `ChooseNextWeather` method to customize weather selection.
-
-### Patch Implementation
-- **Prefix Methods:** Use `Prefix` methods to replace or modify the original method behavior.
-- **Postfix Methods:** Use `Postfix` methods to add additional functionality after the original method executes.
+- **GenTemperature.OffsetFromSunCycle**: This method is used to determine the offset from the sun cycle for calculating temperature.
+- **GenTemperature.SeasonalShiftAmplitudeAt**: This method is used to determine the amplitude of seasonal temperature shift at a given location.
+- **WeatherDecider.ChooseNextWeather**: This method is used to choose the next weather based on various factors.
+- **GameConditionManager.AggregateTemperatureOffset**: This method is used to aggregate temperature offsets from various game conditions.
 
 ## Suggestions for Copilot
+When working on the Cold Desert Nights (Continued) mod, it is recommended to use GitHub Copilot to assist with coding tasks. Copilot can be particularly useful for generating code snippets and suggestions for implementing features and fixing bugs. Some suggestions for using Copilot in this mod include:
 
-1. **Biome Configuration Management:** When implementing new features related to biome temperature or weather configuration, ensure that the code adheres to existing patterns and conventions.
-2. **Translation Updates:** When adding or updating translations, ensure that the XML files are properly formatted and compatible with HugsLib.
-3. **Patch Implementation:** When creating new Harmony patches, ensure that they are well-documented and test them thoroughly to avoid conflicts with other mods.
-4. **Code Refactoring:** Suggest refactoring existing code to improve readability and maintainability, especially for complex methods or classes.
-5. **User Interface Enhancements:** Propose enhancements to the user interface for easier configuration of temperature and weather settings.
+- **XML Integration**: Copilot can assist with generating XML code snippets for defining mod features and settings.
+- **Harmony Patching**: Copilot can assist with generating Harmony patch code snippets for replacing vanilla methods with custom implementations.
+- **Mod Configuration**: Copilot can assist with generating code snippets for implementing real-time configuration of settings while playing.
 
-By following these guidelines and suggestions, developers can contribute effectively to the Cold Desert Nights (Continued) mod, ensuring high-quality code and a rich user experience.
+By following these guidelines and using GitHub Copilot, developers can efficiently work on the Cold Desert Nights (Continued) mod and add new features and fix bugs.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -77,6 +45,14 @@ By following these guidelines and suggestions, developers can contribute effecti
 - In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
 - For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
 
+
+## Temporary files
+
+- Do not create temporary files, build output, test artifacts, or Copilot session
+  folders inside the mod root.
+- Store temporary artifacts under `%USERPROFILE%\CopilotTemp\[modname]`.
+- Direct build and test output there as well, without changing project settings.
+- Clean up task-specific temporary artifacts when finished.
 
 ## Hard rules (must follow)
 - Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.

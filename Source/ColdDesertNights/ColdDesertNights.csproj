@@ -6,7 +6,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-  <FileVersion>1.7.0</FileVersion><GenerateDependencyFile>false</GenerateDependencyFile><AssemblyVersion>1.7</AssemblyVersion><Product>Cold Desert Nights (Continued)</Product><Copyright>© Taryn Winterblade 2026 - MIT License</Copyright><Nullable>warnings</Nullable></PropertyGroup>
+  <FileVersion>1.7.1</FileVersion><GenerateDependencyFile>false</GenerateDependencyFile><AssemblyVersion>1.7</AssemblyVersion><Product>Cold Desert Nights (Continued)</Product><Copyright>© Taryn Winterblade 2026 - MIT License</Copyright><Nullable>warnings</Nullable></PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
       <Version>1.7.5014-unstable</Version>
@@ -18,7 +18,7 @@
       <ExcludeAssets>runtime</ExcludeAssets>
     </PackageReference>
 	  <Reference Include="HugsLib">
-		  <HintPath>..\..\..\..\..\..\workshop\content\294100\3842919025\v1.7\Assemblies\HugsLib.dll</HintPath>
+		  <HintPath>..\..\..\..\..\..\workshop\content\294100\3844683842\v1.7\Assemblies\HugsLib.dll</HintPath>
 		  <CopyLocal>False</CopyLocal>
 		  <Private>false</Private>
 	  </Reference>

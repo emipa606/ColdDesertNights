@@ -72,15 +72,14 @@
     </v1.6>
     <v1.7>
       <li>
-        <packageId>UnlimitedHugs.HugsLib</packageId>
-        <displayName>HugsLib 1.7 (Unofficial)</displayName>
-        <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3842919025</steamWorkshopUrl>
+        <packageId>worldleader.hugslib</packageId>
+        <displayName>HugsLib - 1.7 Waylith Fix (Continued)</displayName>
+        <steamWorkshopUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=3844683842</steamWorkshopUrl>
       </li>
     </v1.7>
   </modDependenciesByVersion>
   <loadAfter>
     <li>brrainz.harmony</li>
-    <li>UnlimitedHugs.HugsLib</li>
   </loadAfter>
   <description>[img]https://img.litet.net/logos/Info.png[/img]
 Update of Taryn Winterblades mod
@@ -145,5 +144,28 @@ All settings can be configured while playing:
 [/list] 
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2042689053][img]https://img.shields.io/github/v/release/emipa606/ColdDesertNights?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | biome, seasons</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.7.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.7.1</modVersion>
+  <loadAfterByVersion>
+    <v1.1>
+      <li>UnlimitedHugs.HugsLib</li>
+    </v1.1>
+    <v1.2>
+      <li>UnlimitedHugs.HugsLib</li>
+    </v1.2>
+    <v1.3>
+      <li>UnlimitedHugs.HugsLib</li>
+    </v1.3>
+    <v1.4>
+      <li>UnlimitedHugs.HugsLib</li>
+    </v1.4>
+    <v1.5>
+      <li>UnlimitedHugs.HugsLib</li>
+    </v1.5>
+    <v1.6>
+      <li>UnlimitedHugs.HugsLib</li>
+    </v1.6>
+    <v1.7>
+      <li>worldleader.hugslib</li>
+    </v1.7>
+  </loadAfterByVersion>
 </ModMetaData>
